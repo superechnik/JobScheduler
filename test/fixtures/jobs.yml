@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_id: MyString
+  priority: 1
+  quantity: 1
+  date_due: 2015-02-10
+  part_id: MyString
+
+two:
+  job_id: MyString
+  priority: 1
+  quantity: 1
+  date_due: 2015-02-10
+  part_id: MyString
