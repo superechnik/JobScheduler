@@ -19,9 +19,11 @@ def index
 @jobs = Job.all
   
 
-@results = @jobs.each do
-	   |job| job.schedule
-	   end
+@results = @jobs.collect do
+|job| job.schedule
+end
+
+
 
 end
 
