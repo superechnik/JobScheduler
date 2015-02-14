@@ -27,12 +27,8 @@ require 'date'
 	def schedule(staff_available=10)
           self.late_check
 	  
-          if @late == false
-            @end_date = date_due - 1
-	    @start_date = @end_date - @std_lead -1
-            puts "Schedule - Start #{@start_date} and finish #{@end_date}"    
-	  else    
-       	    if @time_remaining > 0
+          if @late
+    	    if @time_remaining > 0
 	       @extra_people_count = (quantity/@rate)/(@time_remaining/@shift_length_default).round
 	       puts "You need to put #{@extra_people_count.round} people on this job to be on time"
             else 
@@ -40,9 +36,12 @@ require 'date'
               @start_date = (Date.today+1) + @newlead
               puts "Your new due date will be #{@start_date} if you use #{staff_available} people"
             end
-          end
+	  else
+            @end_date = date_due - 1
+	    @start_date = @end_date - @std_lead -1
+            puts "Schedule - Start #{@start_date} and finish #{@end_date}"    
+	  end
         
 end
-
 
 end
