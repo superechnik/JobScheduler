@@ -19,7 +19,7 @@ def index
 @jobs = Job.all
   
 
-@results = Job.all.each do
+@results = @jobs.each do
 	   |job| job.schedule
 	   end
 
