@@ -18,10 +18,11 @@ def index
     
 @jobs = Job.all
   
-
-@results = Job.all.each do
-	   |job| job.schedule
-	   end
+@results = []
+@jobs.each do |job|
+	tempVar = job.schedule
+	@results.push(tempVar)
+   end
 
 end
 
