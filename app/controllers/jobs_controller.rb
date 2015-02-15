@@ -15,16 +15,24 @@ before_action :set_job, only: [:show, :edit, :update, :destroy]
 
 
 def index
-    
-@jobs = Job.all
+  @jobs = Job.all
   
-@results = []
-@jobs.each do |job|
+  if params[:search]
+	@jobs2 = Job.find(params[:search])
+	@results2 = @jobs2.schedule
+  end
+   
+    @results = []
+    
+	@jobs.each do |job|
 	tempVar = job.schedule
 	@results.push(tempVar)
-   end
+    end
+    
 
 end
+   
+   
 
   
 
