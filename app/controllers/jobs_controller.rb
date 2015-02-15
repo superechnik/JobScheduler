@@ -1,62 +1,49 @@
 class JobsController < ApplicationController
-  
-before_action :set_job, only: [:show, :edit, :update, :destroy]
 
-  
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
 
 # GET /jobs
-  
 
 
 # GET /jobs.json
-  
 
 
+  def index
+    @jobs = Job.all
 
-def index
-  @jobs = Job.all
-  
-  if params[:search]
-	@jobs2 = Job.find(params[:search])
-	@results2 = @jobs2.schedule
-  end
-   
-    @results = []
-    
-	@jobs.each do |job|
-	tempVar = job.schedule
-	@results.push(tempVar)
+    if params[:search]
+      @jobs2 = Job.find(params[:search])
+      @results2 = @jobs2.schedule
     end
-    
 
-end
-   
-   
+    @results = []
 
-  
-
-
+    @jobs.each do |job|
+      tempVar = job.schedule
+      @results.push(tempVar)
+    end
 
 
+  end
 
 
 # GET /jobs/1
-  # GET /jobs/1.json
+# GET /jobs/1.json
   def show
   end
 
-  # GET /jobs/new
+# GET /jobs/new
   def new
     @job = Job.new
   end
 
-  # GET /jobs/1/edit
+# GET /jobs/1/edit
   def edit
   end
 
-  # POST /jobs
-  # POST /jobs.json
+# POST /jobs
+# POST /jobs.json
   def create
     @job = Job.new(job_params)
 
@@ -71,8 +58,8 @@ end
     end
   end
 
-  # PATCH/PUT /jobs/1
-  # PATCH/PUT /jobs/1.json
+# PATCH/PUT /jobs/1
+# PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
       if @job.update(job_params)
@@ -85,8 +72,8 @@ end
     end
   end
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.json
+# DELETE /jobs/1
+# DELETE /jobs/1.json
   def destroy
     @job.destroy
     respond_to do |format|
@@ -96,13 +83,13 @@ end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-    end
+# Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
-      params.require(:job).permit(:job_id, :priority, :quantity, :date_due, :part_num, :part_id)
-    end
+# Never trust parameters from the scary internet, only allow the white list through.
+  def job_params
+    params.require(:job).permit(:job_id, :priority, :quantity, :date_due, :part_num, :part_id)
+  end
 end

@@ -1,37 +1,37 @@
 <%= form_for(@job) do |f| %>
-  <% if @job.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+    <% if @job.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
-      <ul>
-      <% @job.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @job.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :job_id %><br>
+      <%= f.text_field :job_id %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :job_id %><br>
-    <%= f.text_field :job_id %>
-  </div>
-  <div class="field">
-    <%= f.label :priority %><br>
-    <%= f.number_field :priority %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :date_due %><br>
-    <%= f.date_select :date_due %>
-  </div>
-  <div class="field">
-    <%= f.label :part_id %><br>
-    <%= f.text_field :part_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <%= f.label :priority %><br>
+      <%= f.number_field :priority %>
+    </div>
+    <div class="field">
+      <%= f.label :quantity %><br>
+      <%= f.number_field :quantity %>
+    </div>
+    <div class="field">
+      <%= f.label :date_due %><br>
+      <%= f.date_select :date_due %>
+    </div>
+    <div class="field">
+      <%= f.label :part_id %><br>
+      <%= f.text_field :part_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
